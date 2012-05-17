@@ -3,5 +3,7 @@ package main.dataStore;
 import main.entity.Informational;
 
 public interface IDataStore {
-	Informational getInformation(String filePath);
+	Informational getInformation() throws Exception;
+	Parameters getParameters();
+	void setParameters(Parameters parameters);
 }
