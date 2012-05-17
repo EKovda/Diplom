@@ -18,8 +18,8 @@ public class TestFileDataStore {
 	public void setUp() throws Exception {
 		dataRegress = new FileDataStore();
 		dataTrend = new FileDataStore();
-		paramRegress = new Parameters("C:/workspace/regres.txt");
-		paramTrend = new Parameters("C:/workspace/trend.txt");
+		paramRegress = new Parameters("regress.txt");
+		paramTrend = new Parameters("trend.txt");
 
 	}
 
