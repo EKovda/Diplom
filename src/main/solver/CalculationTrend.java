@@ -7,6 +7,53 @@ import main.entity.Informational;
 
 public class CalculationTrend implements ICalculationTrend {
 	
+	public double getFirstFosterConstants(int value)
+	{
+		double[] constant = {1.964, 2.153, 2.279};
+		if(value <= 10)
+		{
+			return constant[0];
+		}	
+		if(value > 10 && value <= 15)
+		{	
+			return constant[1];
+		}	
+		if(value > 15 && value <= 20)
+		{	
+			return constant[2];
+		}
+		return 0;
+	}
+	
+	public double getSecondFosterConstants(int value)
+	{
+		double[] constant = {1.288, 1.521, 1.677};
+		if(value <= 10)
+		{
+			return constant[0];
+		}	
+		if(value > 10 && value <= 15)
+		{	
+			return constant[1];
+		}	
+		if(value > 15 && value <= 20)
+		{	
+			return constant[2];
+		}
+		return 0;
+	}
+	
+	public double getTableStudent (int index)
+	{
+		final double ALFA = 0.25;
+		double[] studentTable= {1.000, 0.816, 0.765, 0.741, 0.727,
+								0.718, 0.711, 0.706, 0.703, 0.700,
+								0.697, 0.695, 0.694, 0.692, 0.691
+							   };
+		
+		return studentTable[index-1];
+	}
+	
 	 public double[] gauss(double[][] a, double[] b) {
 		    int n = a.length;
 		    for (int i = 0; i < n; i++) {
@@ -151,10 +198,12 @@ public class CalculationTrend implements ICalculationTrend {
 			d += dt[i];
 		}
 		
-		//!!!
-		double sigma1 = 1.964;
-		double sigma2 = 1.288;
-		double tkr = 0.763;
+		double sigma1 = getFirstFosterConstants(capacity);
+		double sigma2 = getSecondFosterConstants(capacity);
+		//double sigma1 = 1.964;
+		//double sigma2 = 1.288;
+		double tkr = getTableStudent(2);
+		//double tkr = 0.816;
 		double t1=Math.abs(d/sigma1);
 		double t2=Math.abs((s-sigma1*sigma1)/sigma2);
 		if(t1 > tkr || ((t1 > tkr) && (t2 > tkr)))

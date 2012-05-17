@@ -9,6 +9,17 @@ import main.entity.Informational;
 
 public class CalculationRegress implements ICalculationRegress {
 	
+	public double getTableFisher (int index2)
+	{
+		final double INDEX1 = 1;
+		final double ALFA = 0.05;
+		double[] fishersTable= {161, 18.51, 10.13, 7.71, 6.61,
+								  5.99, 5.50, 5.32, 5.12, 4.96,
+								  4.84, 4.75, 4.67, 4.60, 4.54
+							   };
+		return fishersTable[index2-1];
+	}
+	
 	public double[] gauss(double[][] a, double[] b) {
 	    int n = a.length;
 	    for (int i = 0; i < n; i++) {
@@ -174,8 +185,9 @@ public class CalculationRegress implements ICalculationRegress {
 	     }
 		
 		double F = chisl/znam;
-		//!!!!!
-	    double Fkr = 5.117355008;
+
+		double Fkr = getTableFisher(capacity-2);
+	    //double Fkr = 5.117355008;
 	    if(F > Fkr)
 	    {
 	    	return true;
