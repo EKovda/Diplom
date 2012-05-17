@@ -43,8 +43,6 @@ public class CalculationTrend implements ICalculationTrend {
 	@Override
 	public Informational theSpeedOfAccumulation(Informational trendMassive) {
 		
-		//NEW code
-		
 		int capacity = trendMassive.getIntMassive().length;
 		double [] coefficients = new double [capacity];
 		int[] t = trendMassive.getIntMassive();
@@ -60,7 +58,7 @@ public class CalculationTrend implements ICalculationTrend {
 		double [] trendCalculateMassive = new double [capacity];
 		
 		//FIND coefficients
-		
+
 		double [][] masA = new double [capacity][capacity];
 		double [] masB = new double [capacity];
 		
@@ -87,7 +85,7 @@ public class CalculationTrend implements ICalculationTrend {
 			}
 			masB[i] = masB[i]/capacity;
 		}
-
+		
 		coefficients = gauss(masA, masB);
 		
 		for (int i=0; i<capacity; i++)
@@ -109,8 +107,6 @@ public class CalculationTrend implements ICalculationTrend {
 
 	@Override
 	public boolean trendTestForAdequacy(Informational trendMassive) {
-		
-		//NEW code
 		
 		int capacity = trendMassive.getIntMassive().length;
 		double [] x_t = trendMassive.getDoubleMassive();

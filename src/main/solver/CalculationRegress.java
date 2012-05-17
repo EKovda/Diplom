@@ -45,8 +45,6 @@ public class CalculationRegress implements ICalculationRegress {
 	@Override
 	public Informational densityAccumulationAtTheInitialTime(Informational regressMassive) {
 	
- 		// NEW code 
-		
 		int capacity = regressMassive.getIntMassive().length;
 		double [] coefficients = new double [4];
 		int[] x = regressMassive.getIntMassive();
@@ -72,7 +70,7 @@ public class CalculationRegress implements ICalculationRegress {
 						masA[j][i]=masA[i][j];
 					}
 				}
-				
+			
 				for (int i = 0; i<4; i++)
 				{
 					for(int k=0; k<capacity; k++)
@@ -81,28 +79,16 @@ public class CalculationRegress implements ICalculationRegress {
 					}
 					masB[i] = masB[i]/capacity;
 				}
-
+				
 				coefficients = gauss(masA, masB);
-//				for (int i = 0; i < coefficients.length; i++) {
-//					System.out.println(coefficients[i]);
-//				}
-				
-				
+					
 		for (int i=0; i<capacity; i++)
 		{
 			for (int k=0; k<4; k++)
 			{
 				regressCalculateMassive[i] += coefficients[k] * Math.pow(x[i], k);
-//				System.out.println(k);
-//				System.out.println(coefficients[k]);
-//				System.out.println(x[i]);
-//				System.out.println(Math.pow(x[i], k));
 			}
 		}
-//		for (int i=0; i<capacity; i++)
-//		{
-//		System.out.println(regressCalculateMassive[i]);
-//		}		
 		
 		for (int i=0; i<capacity; i++)
 			regressCalculateMassive[i] = new BigDecimal(regressCalculateMassive[i]).setScale(3, RoundingMode.HALF_UP).doubleValue();
@@ -116,8 +102,6 @@ public class CalculationRegress implements ICalculationRegress {
 	@Override
 	public boolean regressTestForAdequacy(Informational regressMassive) {
 
-		// NEW code 		
-		
 		double sumy = 0, ysr = 0, sum_ysr2 = 0, chisl = 0, sum_ykr2 = 0, znam = 0;
 		int capacity = regressMassive.getIntMassive().length;
 		double [] coefficients = new double [4];

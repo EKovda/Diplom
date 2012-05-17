@@ -1,5 +1,7 @@
 package main.ui.chart;
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartPanel;
@@ -16,10 +18,11 @@ import main.entity.Informational;
 public class Charts {
 	public JPanel drawChartRegress(Informational regressCalculateMassive, Informational regressMassive) {
 		JPanel myPanel = new JPanel();
+		myPanel.setBackground(Color.WHITE);
 		int capacity = regressCalculateMassive.getIntMassive().length;
 		XYSeriesCollection xyDatasetRegress = new XYSeriesCollection();
-		XYSeries seriesRegress = new XYSeries("Regress");
-		XYSeries seriesInitialRegress = new XYSeries("InitialRegress");
+		XYSeries seriesRegress = new XYSeries("Регрессия");
+		XYSeries seriesInitialRegress = new XYSeries("Статистические данные");
 		int[] xInitial = regressMassive.getIntMassive();
 		double[] yInitial = regressMassive.getDoubleMassive();
 		int[] x = regressCalculateMassive.getIntMassive();
@@ -33,8 +36,8 @@ public class Charts {
 
 		xyDatasetRegress.addSeries(seriesRegress);
 		xyDatasetRegress.addSeries(seriesInitialRegress);
-		NumberAxis xAxisRegress= new NumberAxis("x");
-		NumberAxis yAxisRegress = new NumberAxis("y");
+		NumberAxis xAxisRegress= new NumberAxis("грн.");
+		NumberAxis yAxisRegress = new NumberAxis("количество семей, %");
 		XYItemRenderer renderer = new XYLineAndShapeRenderer(true, false);
 		XYPlot plotRegress = new XYPlot(xyDatasetRegress, xAxisRegress, yAxisRegress, renderer);
 		JFreeChart chartRegress = new JFreeChart("RegressChart", JFreeChart.DEFAULT_TITLE_FONT, plotRegress, true);
@@ -43,10 +46,11 @@ public class Charts {
 	}
 	public JPanel drawChartTrend(Informational trendCalculateMassive, Informational trendMassive) {
 		JPanel myPanel = new JPanel();
+		myPanel.setBackground(Color.WHITE);
 		int capacity = trendCalculateMassive.getIntMassive().length;
 		XYSeriesCollection xyDatasetTrend = new XYSeriesCollection();
-		XYSeries seriesTrend = new XYSeries("Trend");
-		XYSeries seriesInitialTrend = new XYSeries("InitialTrend");
+		XYSeries seriesTrend = new XYSeries("Тренд");
+		XYSeries seriesInitialTrend = new XYSeries("Статистические данные");
 		int[] xInitial = trendMassive.getIntMassive();
 		double[] yInitial = trendMassive.getDoubleMassive();
 		int[] x = trendCalculateMassive.getIntMassive();
@@ -61,8 +65,8 @@ public class Charts {
 		
 		xyDatasetTrend.addSeries(seriesTrend);
 		xyDatasetTrend.addSeries(seriesInitialTrend);
-		NumberAxis xAxisTrend= new NumberAxis("x");
-		NumberAxis yAxisTrend = new NumberAxis("y");
+		NumberAxis xAxisTrend= new NumberAxis("денежные накопления");
+		NumberAxis yAxisTrend = new NumberAxis("год");
 		XYItemRenderer renderer = new XYLineAndShapeRenderer(true, false);
 		XYPlot plotTrend = new XYPlot(xyDatasetTrend, xAxisTrend, yAxisTrend, renderer);
 		JFreeChart chartTrend = new JFreeChart("TrendChart", JFreeChart.DEFAULT_TITLE_FONT, plotTrend, true);
@@ -71,10 +75,11 @@ public class Charts {
 	}
 	public JPanel drawChartFinally(Informational finallyCalculateMassive, Informational finallyMassive) {
 		JPanel myPanel = new JPanel();
+		myPanel.setBackground(Color.WHITE);
 		int capacity = finallyCalculateMassive.getIntMassive().length;
 		XYSeriesCollection xyDatasetFinally = new XYSeriesCollection();
-		XYSeries seriesFinally = new XYSeries("Finally");
-		XYSeries seriesInitialFinally = new XYSeries("InitialFinally");
+		XYSeries seriesFinally = new XYSeries("Финальный график");
+		XYSeries seriesInitialFinally = new XYSeries("Статистические данные");
 		int[] xInitial = finallyMassive.getIntMassive();
 		double[] yInitial = finallyMassive.getDoubleMassive();
 		int[] x = finallyCalculateMassive.getIntMassive();
@@ -87,8 +92,8 @@ public class Charts {
 		}
 		xyDatasetFinally.addSeries(seriesFinally);
 		xyDatasetFinally.addSeries(seriesInitialFinally);
-		NumberAxis xAxisFinally= new NumberAxis("x");
-		NumberAxis yAxisFinally = new NumberAxis("y");
+		NumberAxis xAxisFinally= new NumberAxis("грн.");
+		NumberAxis yAxisFinally = new NumberAxis("количество семей, %");
 		XYItemRenderer renderer = new XYLineAndShapeRenderer(true, false);
 		XYPlot plotFinally = new XYPlot(xyDatasetFinally, xAxisFinally, yAxisFinally, renderer);
 		JFreeChart chartFinally = new JFreeChart("FinallyChart", JFreeChart.DEFAULT_TITLE_FONT, plotFinally, true);
